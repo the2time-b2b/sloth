@@ -9,6 +9,11 @@ eval git add .
 
 while IFS= read -r result
 do
+  if [ "$commitMessages" == "" ]
+  then
+    commitMessagesOverwrite=" -a --allow-empty-message -m \"\""
+    break
+  fi
   commitMessagesOverwrite+=" -m \"$result\""
 done < <(echo "$commitMessages")
 
