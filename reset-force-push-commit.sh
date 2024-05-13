@@ -19,6 +19,6 @@ done < <(echo "$commitMessages")
 
 eval git commit $commitMessagesOverwrite
 
-branchName=$(git branch --list | tail -n +1 | awk -F " " '{ print $NF }')
+branchName=$(git branch --show-current)
 eval git push --force origin $branchName
 
